@@ -22,8 +22,8 @@
 
 <div class=" bg-primary w-full h-screen flex flex-col justify-center items-center ">
     <h1 class="text-4xl font-semibold text-secondary m-10">Lifeline</h1>
-    <div class="flex flex-col w-fit px-11 p-6 rounded-md bg-secondary">
-        <div class="flex flex-col">
+    <div class="flex flex-col w-fit h-full px-11 p-6 rounded-md bg-secondary">
+        <div class="flex flex-col h-full">
             {#each $chatStore.messages as message}
                 <div class="flex w-auto mb-3 {message['position'] ? 'justify-start': 'justify-end'}">
                     <ChatBubble sender={message['sender']} message={message['message']} position={message['position']} />
