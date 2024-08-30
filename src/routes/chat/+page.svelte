@@ -1,4 +1,4 @@
-<script lang="ts">
+<!-- <script lang="ts">
     import { chatStore } from "$lib/stores/chatStore";
     import { writable } from "svelte/store";
     import ChatBubble from "$lib/components/chatBubble.svelte";
@@ -35,4 +35,74 @@
             <button class="bg-primary px-5 py-2 rounded-full text-secondary font-semibold" on:click={sendMessage}>send</button>
         </div>  
     </div>
-</div>
+</div> -->
+
+<script>
+    import { onMount } from 'svelte';
+  
+    let name = "Santos, Cedrick P.";
+    let address = "666 J.Planas St. Tondo, Gagalangin, Manila, 1013";
+    let isListening = false;
+  
+    function toggleListening() {
+      isListening = !isListening;
+    }
+  
+    onMount(() => {
+      // Initialize any necessary plugins or libraries here
+    });
+  </script>
+  
+  <div class="flex justify-center items-center min-h-screen bg-gray-100">
+    <div class="w-80 bg-white rounded-3xl shadow-lg overflow-hidden">
+      <div class="p-4 space-y-4">
+        <!-- Header -->
+        <div class="flex items-center space-x-4">
+          <img src="https://via.placeholder.com/50" alt="Profile" class="w-12 h-12 rounded-full" />
+          <div>
+            <h2 class="font-semibold text-lg">{name}</h2>
+            <p class="text-xs text-gray-500">{address}</p>
+          </div>
+        </div>
+  
+        <!-- Emergency Call Button -->
+        <button class="w-full bg-red-600 text-white py-2 rounded-lg font-semibold">
+          Emergency Call
+        </button>
+  
+        <!-- See Information Section -->
+        <div class="bg-blue-100 p-3 rounded-lg">
+          <h3 class="text-center text-blue-800 font-semibold mb-2">See Information</h3>
+          <div class="space-y-2">
+            {#each ['Philippine Red Cross', 'Philippine National Police (PNP)', 'Bureau of Fire Protection (BFP)'] as hotline}
+              <div class="flex justify-between items-center">
+                <span class="text-sm">{hotline}</span>
+                <button class="bg-red-600 text-white text-xs py-1 px-3 rounded">Call</button>
+              </div>
+            {/each}
+          </div>
+        </div>
+  
+        <!-- Lifeline AI Section -->
+        <div class="bg-blue-100 p-3 rounded-lg">
+          <h3 class="text-center text-blue-800 font-semibold mb-2">Lifeline AI</h3>
+          <p class="text-center text-sm mb-2">Di maka hinga kapatid</p>
+          <p class="text-center font-semibold mb-4">What's your emergency?</p>
+          <button 
+            on:click={toggleListening}
+            class="w-20 h-20 rounded-full bg-white shadow-md flex items-center justify-center mx-auto"
+          >
+            <svg class="w-8 h-8 text-red-600" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M7 4a3 3 0 016 0v4a3 3 0 11-6 0V4zm4 10.93A7.001 7.001 0 0017 8a1 1 0 10-2 0A5 5 0 015 8a1 1 0 00-2 0 7.001 7.001 0 006 6.93V17H6a1 1 0 100 2h8a1 1 0 100-2h-3v-2.07z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <style global>
+    @tailwind base;
+    @tailwind components;
+    @tailwind utilities;
+  </style>
