@@ -106,3 +106,5 @@
     @tailwind components;
     @tailwind utilities;
   </style>
+
+  <!-- just to make sure changes will reflect -->
