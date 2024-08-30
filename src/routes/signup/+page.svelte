@@ -1,3 +1,6 @@
+<!-- design subject to change-->
+<!-- Initial design inspired by login/signup form used by airbnb -->
+
 <script>
     let password = "";
     let email = "";
