@@ -54,11 +54,11 @@
   </script>
   
   <div class="flex justify-center items-center min-h-screen bg-gray-100">
-    <div class="w-80 bg-white rounded-3xl shadow-lg overflow-hidden">
-      <div class="p-4 space-y-4">
+    <div class="w-100 bg-white rounded-[45px] shadow-lg overflow-hidden">
+      <div class="p-1 space-y-5 w-[402px] h-[878px] ">
         <!-- Header -->
-        <div class="flex items-center space-x-4">
-          <img src="https://via.placeholder.com/50" alt="Profile" class="w-12 h-12 rounded-full" />
+        <div class="flex items-center space-x-4 ml-2 mt-3">
+          <img src="src\img\new year 1.jpg" alt="Profile" class="w-[80px] h-[80px] rounded-full" />
           <div>
             <h2 class="font-semibold text-lg">{name}</h2>
             <p class="text-xs text-gray-500">{address}</p>
@@ -71,9 +71,12 @@
         </button>
   
         <!-- See Information Section -->
-        <div class="bg-blue-100 p-3 rounded-lg">
-          <h3 class="text-center text-blue-800 font-semibold mb-2">See Information</h3>
+        <div class="bg-white p-3 rounded-lg">
+          <button type="submit" class="w-full mb-5 h-[35px] text-white  rounded-[3px] font-semibold bg-[#78A2CA]">
+            See information
+        </button>
           <div class="space-y-2">
+            <span class="text-sm">Hotline</span>
             {#each ['Philippine Red Cross', 'Philippine National Police (PNP)', 'Bureau of Fire Protection (BFP)'] as hotline}
               <div class="flex justify-between items-center">
                 <span class="text-sm">{hotline}</span>
@@ -84,9 +87,9 @@
         </div>
   
         <!-- Lifeline AI Section -->
-        <div class="bg-blue-100 p-3 rounded-lg">
+        <div class="bg-blue-100 p-3 rounded-[45px]">
           <h3 class="text-center text-blue-800 font-semibold mb-2">Lifeline AI</h3>
-          <p class="text-center text-sm mb-2">Di maka hinga kapatid</p>
+          <p class="text-center text-sm mb-2">Di maka hinga kapatid ko</p>
           <p class="text-center font-semibold mb-4">What's your emergency?</p>
           <button 
             on:click={toggleListening}
