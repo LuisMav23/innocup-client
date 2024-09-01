@@ -12,10 +12,10 @@
   }
 </script>
 
-<div class="min-h-screen bg-blue-300 flex items-center justify-center p-4">
+<div class="min-h-screen bg-[#78A2CA] flex items-center justify-center p-4">
   <div class="w-full max-w-4xl flex">
     <!-- Logo and title section -->
-    <div class="flex-1 flex flex-col justify-center items-start pr-8">
+    <div class="flex-1 flex flex-col justify-center items-start ">
       <div>
         <img src="/src/img/lifeline_logo.png" alt="Lifeline Logo">
       </div>
