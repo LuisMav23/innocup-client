@@ -67,7 +67,7 @@
         display: flex;
         flex-direction: column;
         max-height: 750px; 
-        width: 810px;
+        width: 800px;
         background: white;
         border-radius: 45px;
         padding: 1rem;
