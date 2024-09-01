@@ -94,6 +94,7 @@
 
     .submit-button {
         margin-top: auto; 
+        
     }
 
     @media (max-width: 768px) {
@@ -211,10 +212,10 @@
                 <span style="opacity: 0.5;">Already have an Account?</span> <a href="http://localhost:5173/signup">Log In</a> 
             </p>
 
-            <div class="submit-button">
+            <div class="submit-button flex justify-center items-center">
                 <button
                     type="submit"
-                    class="w-full bg-[#7FB77E] text-white rounded-md font-[Merriweather] font-[700] px-5 py-2">
+                    class="w-[300px] bg-[#7FB77E] text-white rounded-md font-[Merriweather] font-[700] px-5 py-2">
                     Sign up
                 </button>
             </div>
