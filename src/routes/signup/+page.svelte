@@ -75,10 +75,15 @@
         </svg>
     </button>
 </div>
+      <div class="flex justify-between">
+        <p class="text-xs text-[#5C6265] mb-4 text-right font-[Montserrat]">
+          <span style="opacity: 0.5;">New to Lifeline?</span> <a href="http://localhost:5173/log%20in">Sign Up</a>
+        </p>
         <p class="text-xs text-[#5C6265] mb-4 text-right font-[Montserrat]">
             Forgot Password
         </p>
-        <button type="submit" class="w-full text-white p-3 rounded-md font-semibold bg-[#78A2CA]">
+      </div>
+        <button type="submit" class="w-full text-white p-3 rounded-md font-semibold bg-[#78A2CA] font-[Merriweather] ">
           Continue
       </button>
       </form>
