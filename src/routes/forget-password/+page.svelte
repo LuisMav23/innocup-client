@@ -16,7 +16,7 @@
   <div class="w-full max-w-4xl flex">
     <!-- Logo and title section -->
     <div class="flex-1 flex flex-col justify-center items-start pr-8">
-      <div class="text-white text-4xl font-bold flex items-center">
+      <div>
         <img src="/src/img/lifeline_logo.png" alt="Lifeline Logo">
       </div>
     </div>

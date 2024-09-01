@@ -59,12 +59,15 @@
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@600;700&display=swap');
 
+    .logo {
+        margin-right: 2rem; 
+    }
+
     .form-container {
         display: flex;
         flex-direction: column;
         max-height: 750px; 
-        width: 810px; 
-        margin-left: 40%;
+        width: 810px;
         background: white;
         border-radius: 45px;
         padding: 1rem;
@@ -104,6 +107,9 @@
 </style>
 
 <div class="min-h-screen min-w-screen flex items-center justify-center bg-[#78A2CA]">
+    <div class="logo">
+        <img src="/src/img/lifeline_logo.png" alt="Lifeline Logo">
+    </div>
     <div class="form-container">
         <h2 class="text-2xl font-semibold my-1 text-center font-[Montserrat]">Sign up Now!</h2>
         <h2 class="text-xl font-semibold mb-2 text-left font-[Montserrat]">Welcome!</h2>
