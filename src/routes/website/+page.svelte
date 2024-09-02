@@ -1,11 +1,11 @@
-<script lang="ts">
+<script>
     import { onMount } from 'svelte';
 
     let message = "";
     let messages = [
         { text: "Is your brother conscious?", from: "ai" },
-        { text: "Di makahinga kapatid ko ano gagawin ko", from: "user", avatar: "C:\\Users\\rexno\\OneDrive\\Documents\\Innovation Cup\\innocup-client\\src\\img\\new year 1.jpg" },
-        { text: "Yes", from: "user", avatar: "C:\\Users\\rexno\\OneDrive\\Documents\\Innovation Cup\\innocup-client\\src\\img\\new year 1.jpg" },
+        { text: "Di makahinga kapatid ko ano gagawin ko", from: "user", avatar: "path/to/user_avatar.jpg" },
+        { text: "Yes", from: "user", avatar: "path/to/user_avatar.jpg" },
         { text: "Help him into a comfortable position, ideally sitting upright or leaning slightly forward.", from: "ai" },
     ];
 
@@ -29,7 +29,7 @@
 
     $: messages, scrollToBottom();
 
-    function handleKeyPress(event: KeyboardEvent) {
+    function handleKeyPress(event) {
         if (event.key === 'Enter') {
             sendMessage();
         }
@@ -58,7 +58,7 @@
                     {#if from === 'ai'}
                         <img src={avatar} alt="AI Avatar" class="w-8 h-8 rounded-full mr-2">
                     {/if}
-                    <div class="max-w-[602px] break-words p-4 rounded-lg {from === 'ai' ? 'bg-[#D9E5F2] text-black' : 'bg-[#627B94] text-white'}">
+                        <div class="max-w-[650px] p-4 rounded-lg {from === 'ai' ? 'bg-[#D9E5F2] text-black' : 'bg-[#627B94] text-white'}">
                         {text}
                     </div>
                     {#if from === 'user'}
