@@ -50,10 +50,14 @@
         <!-- Profile and Emergency Call Section -->
         <div class="flex items-center space-x-4">
           <img src="src\img\new year 1.jpg" alt="Profile" class="w-20 h-20 rounded-full object-cover shadow-md">
-          <div>
-            <h1 class="text-2xl font-bold text-gray-800 font-['Montserrat']">Santos, Cedrick P.</h1>
-            <p class="text-sm text-gray-500 font-['Montserrat']">666 J.Planas St. Tondo, <br> Gagalangin, Manila, 1013</p>
+          <div class="flex flex-col gap-y-2 w-[250px]">
+          <div class="outline outline-2">
+            <input type="text" class="text-2xl w-full text-blacks font-['Montserrat']">
           </div>
+          <div class="outline outline-2">
+            <input type="text" class="text-sm w-full h-[50px] p-2.5 text-gray-500 font-['Montserrat'] place-items-start">
+          </div>
+        </div>
           <button class="bg-[#DA0202] w-[205px] h-[56px] text-white font-medium  drop-shadow-[0px_0px_7px_#E83232] hover:bg-red-600 transition-colors font-[SourceSerif4] " style="margin-left: auto;">
             EMERGENCY CALL
           </button>
