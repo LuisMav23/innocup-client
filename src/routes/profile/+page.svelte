@@ -1,5 +1,22 @@
 <script>
   let dateOfBirth = null;
+  let age = ''
+
+  function calculateAge(birthdate) {
+    const today = new Date();
+    const birthDate = new Date(birthdate);
+    let calculatedAge = today.getFullYear() - birthDate.getFullYear();
+    const monthDifference = today.getMonth() - birthDate.getMonth();
+
+    if (
+      monthDifference < 0 ||
+      (monthDifference === 0 && today.getDate() < birthDate.getDate())
+    ) {
+      calculatedAge--;
+    }
+    
+    age = calculatedAge;
+  }
 
   function handleSubmit() {
     // Handle form submission logic here
@@ -53,41 +70,53 @@
 
 
           <!-- Personal Information Section -->
-          <div class="grid grid-cols-3 gap-2 col-span-2">
-            <div>
-              <label class="block text-sm font-medium text-gray-700 opacity-50">Birthdate</label>
-                  <input
-                    type="date"
-                    class=" text-[13px] mt-2 block w-[150px] h-[24px] p-3 border border-gray-300  font-['Montserrat'] focus:ring-blue-500 focus:border-blue-500 shadow-sm"
-                    bind:value={dateOfBirth}/>
-            </div>
-            <div>
-              <label class="block text-sm font-medium text-gray-700 opacity-50">Marital Status</label>
-              <select class="mt-2 block w-[110px] h-[24px] font-[Montserrat]  border border-gray-300 focus:ring-blue-500 focus:border-blue-500 shadow-sm text-[15px] ">
-                <option>Widowed</option>
-                <option>Single</option>
-                <option>Married</option>
-              </select>
-            </div>
-            <div>
-              <label class="block text-sm font-medium text-gray-700 opacity-50">Phone Number</label>
-              <input type="text" class="mt-2 block w-[130px] h-[24px] p-1 border border-gray-300 font-[Montserrat]  focus:ring-blue-500 focus:border-blue-500 shadow-sm" placeholder="+63">
-            </div>
-            <div>
-              <label class="block text-sm font-medium text-gray-700 opacity-50">Age</label>
-              <input type="text" class="mt-2 block w-[90px] h-[24px] p-1 text-sm border border-gray-300 font-[Montserrat] focus:ring-blue-500 focus:border-blue-500 shadow-sm" placeholder="?? yrs old">
-            </div>
-            <div>
-              <label class="block text-sm font-medium text-black-700 opacity-50">Gender</label>
-              <select class="mt-2 block w-[110px] h-[24px] font-[Montserrat] border border-gray-300 focus:ring-blue-500 focus:border-blue-500 shadow-sm">
-                <option>Male</option>
-                <option>Female</option>
-                <option>Prefer not to say</option>
-              </select>
+<div class="grid grid-cols-3 gap-2 col-span-2">
+  <div>
+    <label class="block text-sm font-medium text-gray-700 opacity-50">Birthdate</label>
+    <input
+      type="date"
+      class="text-[13px] mt-2 block w-[150px] h-[24px] p-3 border border-gray-300 font-['Montserrat'] focus:ring-blue-500 focus:border-blue-500 shadow-sm"
+      bind:value={dateOfBirth}
+      on:change={() => calculateAge(dateOfBirth)}
+    />
+  </div>
+  <div>
+    <label class="block text-sm font-medium text-gray-700 opacity-50">Marital Status</label>
+    <select class="mt-2 block w-[110px] h-[24px] font-[Montserrat] border border-gray-300 focus:ring-blue-500 focus:border-blue-500 shadow-sm text-[15px]">
+      <option>Widowed</option>
+      <option>Single</option>
+      <option>Married</option>
+    </select>
+  </div>
+  <div>
+    <label class="block text-sm font-medium text-gray-700 opacity-50">Phone Number</label>
+    <input
+      type="text"
+      class="mt-2 block w-[130px] h-[24px] p-1 border border-gray-300 font-[Montserrat] focus:ring-blue-500 focus:border-blue-500 shadow-sm"
+      placeholder="+63"
+    />
+  </div>
+  <div>
+    <label class="block text-sm font-medium text-gray-700 opacity-50">Age</label>
+    <input
+      type="text"
+      class="mt-2 block w-[90px] h-[24px] p-1 text-sm border border-gray-300 font-[Montserrat] focus:ring-blue-500 focus:border-blue-500 shadow-sm"
+      placeholder="?? yrs old"
+      value={age}
+      readonly
+    />
+  </div>
+  <div>
+    <label class="block text-sm font-medium text-gray-700 opacity-50">Gender</label>
+    <select class="mt-2 block w-[110px] h-[24px] font-[Montserrat] border border-gray-300 focus:ring-blue-500 focus:border-blue-500 shadow-sm">
+      <option>Male</option>
+      <option>Female</option>
+      <option>Prefer not to say</option>
+    </select>
             </div>
             <div>
               <label class="block text-sm font-medium text-gray-700 opacity-50">PhilHealth No.</label>
-              <input type="text" class="mt-2 block w-[150px] h-[24px] p-1 border border-gray-300  focus:ring-blue-500 focus:border-blue-500 shadow-sm">
+              <input type="text" class="mt-2 block w-[150px] h-[24px] p-1 border border-gray-300  focus:ring-blue-500 focus:border-blue-500 shadow-sm text-center" placeholder="__-_________-_">
             </div>
           </div>
       
@@ -108,18 +137,22 @@
         <div class="grid grid-cols-3 gap-6">
           <div class="bg-gray-100 p-4 rounded-lg shadow-sm">
             <label class="block text-sm font-medium text-gray-700">Blood Type</label>
+            <input type="text" class="mt-1 block w-full p-2.5 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 shadow-sm" value="Smoking">
             <!-- Blood Type Selector -->
           </div>
           <div class="bg-gray-100 p-4 rounded-lg shadow-sm">
             <label class="block text-sm font-medium text-gray-700">Chronic Conditions</label>
+            <input type="text" class="mt-1 block w-full p-2.5 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 shadow-sm" value="Smoking">
             <!-- Chronic Conditions Input -->
           </div>
           <div class="bg-gray-100 p-4 rounded-lg shadow-sm">
             <label class="block text-sm font-medium text-gray-700">Allergies</label>
+            <input type="text" class="mt-1 block w-full p-2.5 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 shadow-sm" value="Smoking">
             <!-- Allergies Input -->
           </div>
           <div class="bg-gray-100 p-4 rounded-lg shadow-sm">
             <label class="block text-sm font-medium text-gray-700">Medications</label>
+            <input type="text" class="mt-1 block w-full p-2.5 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 shadow-sm" value="Smoking">
             <!-- Medications Input -->
           </div>
           <div class="bg-gray-100 p-4 rounded-lg shadow-sm">
@@ -128,6 +161,7 @@
           </div>
           <div class="bg-gray-100 p-4 rounded-lg shadow-sm">
             <label class="block text-sm font-medium text-gray-700">Past Surgeries</label>
+            <input type="text" class="mt-1 block w-full p-2.5 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 shadow-sm" value="Smoking">
             <!-- Past Surgeries Input -->
           </div>
         </div>
