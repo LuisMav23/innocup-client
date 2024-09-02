@@ -71,22 +71,21 @@
     }
 </script>
 
-<div class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
-    <div class="bg-white rounded-lg shadow-lg max-w-md w-full">
-        <div class="p-4">
-            <h2 class="text-xl font-semibold mb-4">LifeLine Chat</h2>
-            
-            <div class="bg-gray-200 rounded-lg p-4 mb-4">
+<div class="bg-white max-w-md w-full max-h-screen flex items-center justify-center p-5">
+    <div class="bg-white rounded-lg  max-w-md w-full overflow-y-auto">
+        <div class="p-1">
+            <div class="rounded-lg p-4 mb-4">
                 <div class="flex items-center mb-2">
                     <div class="w-16 h-16 bg-gray-300 rounded-full mr-4 overflow-hidden">
-                        <img src="/api/placeholder/64/64" alt="Santos, Cedrick P." class="w-full h-full object-cover" />
+                        <img src="src\img\new year 1.jpg" alt="Santos, Cedrick P." class="w-full h-full object-cover outline outline-1" />
                     </div>
                     <div>
                         <h3 class="font-semibold">Santos, Cedrick P.</h3>
-                        <p class="text-sm text-gray-600">666 J Planas St, Tondo, Gagalangin, Manila, 1013</p>
+                        <p class="text-sm text-gray-600">666 J Planas St, Tondo,Gagalangin, Manila, 1013</p>
+                        <button class="bg-[#DA0202] text-white  w-[157px] h-[23px] font-bold  text-[15px]">Emergency Call</button>
                     </div>
                 </div>
-                <button class="bg-red-500 text-white px-4 py-2 rounded-full w-full">Emergency Call</button>
+                
             </div>
 
             {#if isInformationVisible}
@@ -95,49 +94,87 @@
                         <div class="swiper-wrapper">
                             {#each carouselData as slide}
                                 <div class="swiper-slide">
-                                    <div class="bg-blue-100 p-4 rounded-lg">
-                                        <h3 class="font-semibold mb-2">{slide.title}</h3>
-                                        {#if slide.type === 'emergency'}
-                                            <p><span class="font-semibold">Name:</span> {slide.content.name}</p>
-                                            <p><span class="font-semibold">Relation:</span> {slide.content.relation}</p>
-                                            <p><span class="font-semibold">Phone Number:</span> {slide.content.phoneNumber}</p>
-                                        {:else if slide.type === 'personal'}
-                                            <p><span class="font-semibold">Birthdate:</span> {slide.content.birthdate}</p>
-                                            <p><span class="font-semibold">Age:</span> {slide.content.age}</p>
-                                            <p><span class="font-semibold">Marital Status:</span> {slide.content.maritalStatus}</p>
-                                            <p><span class="font-semibold">Gender:</span> {slide.content.gender}</p>
-                                            <p><span class="font-semibold">Phone Number:</span> {slide.content.phoneNumber}</p>
-                                            <p><span class="font-semibold">Philhealth No:</span> {slide.content.philhealthNo}</p>
-                                        {/if}
-                                    </div>
+                                    {#if slide.type === 'emergency'}
+                                        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                                            <div class="bg-[#78A2CC] p-2 text-center text-white font-semibold">
+                                                {slide.title}
+                                            </div>
+                                            <div class="bg-white p-4">
+                                                <div class="flex justify-between">
+                                                    <span class="text-gray-500">Name</span>
+                                                    <span class="font-semibold text-black  w-[200px] text-left">{slide.content.name}</span>
+                                                </div>
+                                                <div class="flex justify-between mt-2">
+                                                    <span class="text-gray-500">Relation</span>
+                                                    <span class="font-semibold text-black w-[200px] text-left">{slide.content.relation}</span>
+                                                </div>
+                                                <div class="flex justify-between mt-2">
+                                                    <span class="text-gray-500">Phone Number</span>
+                                                    <span class="font-semibold text-black w-[200px] text-left">{slide.content.phoneNumber}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {:else if slide.type === 'personal'}
+                                        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                                            <div class="bg-[#78A2CC] p-2 text-center text-white font-semibold">
+                                                {slide.title}
+                                            </div>
+                                            <div class="bg-white p-4 ">
+                                                <div class="flex justify-between">
+                                                    <span class="text-gray-500">Birthdate</span>
+                                                    <span class="font-semibold text-black w-[200px] text-left">{slide.content.birthdate}</span>
+                                                </div>
+                                                <div class="flex justify-between mt-1">
+                                                    <span class="text-gray-500">Age</span>
+                                                    <span class="font-semibold text-black w-[200px] text-left">{slide.content.age}</span>
+                                                </div>
+                                                <div class="flex justify-between mt-1">
+                                                    <span class="text-gray-500">Marital Status</span>
+                                                    <span class="font-semibold text-black w-[200px] text-left">{slide.content.maritalStatus}</span>
+                                                </div>
+                                                <div class="flex justify-between mt-1">
+                                                    <span class="text-gray-500">Gender</span>
+                                                    <span class="font-semibold text-black w-[200px] text-left">{slide.content.gender}</span>
+                                                </div>
+                                                <div class="flex justify-between mt-1">
+                                                    <span class="text-gray-500">Phone Number</span>
+                                                    <span class="font-semibold text-black w-[200px] text-left">{slide.content.phoneNumber}</span>
+                                                </div>
+                                                <div class="flex justify-between mt-1">
+                                                    <span class="text-gray-500">Philhealth No</span>
+                                                    <span class="font-semibold text-black w-[200px] text-left">{slide.content.philhealthNo}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {/if}
                                 </div>
                             {/each}
                         </div>
                         <div class="swiper-pagination absolute bottom-0 left-0 right-0"></div>
-                        <div class="swiper-button-prev absolute top-1/2 left-2 transform -translate-y-1/2 w-4 h-4"></div>
-                        <div class="swiper-button-next absolute top-1/2 right-2 transform -translate-y-1/2 w-4 h-4"></div>
+                        
                     </div>
                 </div>
             {/if}
 
-            <button on:click={toggleInformation} class="bg-gray-200 text-gray-700 px-4 py-2 rounded w-full mb-4">
+            <button on:click={toggleInformation} class="bg-white w-[365px] h-[35px] outline  outline-[#78A2CC] outline-3 font-bold text-xl text-[#78A2CC] rounded-[3px] w-full mb-4">
                 {isInformationVisible ? 'Hide Information' : 'Show Information'}
             </button>
 
             <div>
-                <h3 class="font-semibold mb-2">Hotlines:</h3>
+                <h3 class="font-semibold mb-2 opacity-0.5">Hotlines:</h3>
                 {#each hotlines as hotline}
-                    <div class="flex justify-between items-center mb-2">
-                        <span>{hotline.name}</span>
-                        <button class="bg-red-500 text-white px-4 py-1 rounded-full text-sm">{hotline.action}</button>
+                    <div class="flex justify-between items-center mb-2 ">
+                        <span class="text-gray-500 font-light">{hotline.name}</span>
+                        <button class="bg-[#DA0202] font-bold text-white px-4 py-1 rounded-[4px] text-sm">{hotline.action}</button>
                     </div>
                 {/each}
             </div>
         </div>
 
-        <div class="bg-gray-200 p-4 rounded-b-lg">
-            <button class="bg-blue-500 text-white px-4 py-2 rounded-full w-full flex items-center justify-center">
-                <span class="mr-2">📱</span> Chat with Lifeline!
+        <div class="bg-[#78A2CC]  w-full p-4 rounded-b-[30px] flex flex-col gap-y-2">
+            <div class="h-[5px] w-[130px] rounded-full bg-[#FAFAFA] place-self-center"></div>
+            <button class="bg-white text-black px-4 py-2 h-[42px] rounded-full w-full flex items-center justify-start font-[Merriweather]">
+                <span class="mr-2"><img class="w-[33px] h-[29px]" src="src\img\chatbot_logo.png"></span> Chat with Lifeline!
             </button>
         </div>
     </div>
@@ -150,12 +187,15 @@
 
     :global(.swiper-button-next),
     :global(.swiper-button-prev) {
-        color: #3B82F6; /* Tailwind blue-500 */
-        width: 1rem; /* Smaller width */
-        height: 1rem; /* Smaller height */
+        color: #ffffff; 
+        width: 1rem; 
+        height: 1rem; 
     }
 
     :global(.swiper-pagination-bullet-active) {
-        background-color: #3B82F6; /* Tailwind blue-500 */
+        background-color: #54575c; 
     }
+
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@600;700&display=swap');
 </style>
