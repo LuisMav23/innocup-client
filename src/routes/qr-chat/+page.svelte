@@ -169,7 +169,96 @@
                     </div>
                 {/each}
             </div>
+            <div class="h-[2.5px] w-[328px] rounded-full bg-[#A4C3D2] place-self-center"></div>
         </div>
+
+<!--Health Conditions-->
+       <div class="bg-[#007FFE] w-[206px] text-xl h-[34px] rounded-[6px]  text-white shadow-2xl flex items-center justify-center mt-1">Health Conditions</div>
+<!--Blood Type-->
+    <div class="bg-white w-[365px] rounded-lg shadow-md overflow-auto my-2">
+         <div class="bg-[#78A2CC] w-full h-[22.25px] p-2  rounded-t-[25px] text-white font-semibold flex items-center justify-center">
+            Blood Type
+            </div>
+        <div class="bg-white p-4 w-full ">
+                <div class="flex justify-between h-[34px]">
+                    <span class="font-semibold text-black  w-[200px] text-left">acute sinusitis</span>
+                </div>
+                <div class="h-[2.5px]  rounded-full bg-[#A4C3D2] place-self-center"></div>
+                <div class="flex justify-between mt-2">
+                    <span class="font-semibold text-black w-[200px] text-left">acute sinusitis</span>
+                </div>
+                <div class="h-[2.5px] rounded-full bg-[#A4C3D2] place-self-center"></div>
+                <div class="flex justify-between mt-2">
+                    <span class="font-semibold text-black w-[200px] text-left">acute sinusitis</span>
+                </div>
+                <div class="h-[2.5px] w-[328px] rounded-full bg-[#A4C3D2] place-self-center"></div>
+        </div>
+    </div>
+<!--Chronic Conditions-->
+    <div class="bg-white w-[365px] rounded-lg shadow-md overflow-auto my-2">
+        <div class="bg-[#78A2CC] w-full h-[22.25px] p-2  rounded-t-[25px] text-white font-semibold flex items-center justify-center">
+           Chronic Conditions
+           </div>
+       <div class="bg-white p-4 w-full ">
+               <div class="flex justify-between h-[34px]">
+                   <span class="font-semibold text-black  w-[200px] text-left">acute sinusitis</span>
+               </div>
+               <div class="h-[2.5px] w-[328px] rounded-full bg-[#A4C3D2] place-self-center"></div>
+               <div class="flex justify-between mt-2">
+                   <span class="font-semibold text-black w-[200px] text-left">acute sinusitis</span>
+               </div>
+               <div class="h-[2.5px] w-[full] rounded-full bg-[#A4C3D2] place-self-center"></div>
+               <div class="flex justify-between mt-2">
+                   <span class="font-semibold text-black w-[200px] text-left">acute sinusitis</span>
+               </div>
+               <div class="h-[2.5px] w-[328px] rounded-full bg-[#A4C3D2] place-self-center"></div>
+       </div>
+   </div>
+
+<!--Medical Documents & Records-->
+<div class="bg-[#007FFE] w-[344px] text-xl h-[34px] rounded-[6px]  text-white shadow-2xl flex items-center justify-center">Medical Documents & Records</div>
+<!--Medical Documents-->
+    <div class="bg-white w-[365px] rounded-lg shadow-md overflow-auto my-2">
+         <div class="bg-[#78A2CC] w-full h-[22.25px] p-2  rounded-t-[25px] text-white font-semibold flex items-center justify-center">
+            Medical Documents
+            </div>
+        <div class="bg-white p-4 w-full ">
+                <div class="flex justify-between h-[34px]">
+                    <span class="font-semibold text-black  w-[200px] text-left">acute sinusitis</span>
+                </div>
+                <div class="h-[2.5px]  rounded-full bg-[#A4C3D2] place-self-center"></div>
+                <div class="flex justify-between mt-2">
+                    <span class="font-semibold text-black w-[200px] text-left">acute sinusitis</span>
+                </div>
+                <div class="h-[2.5px] rounded-full bg-[#A4C3D2] place-self-center"></div>
+                <div class="flex justify-between mt-2">
+                    <span class="font-semibold text-black w-[200px] text-left">acute sinusitis</span>
+                </div>
+                <div class="h-[2.5px] w-[328px] rounded-full bg-[#A4C3D2] place-self-center"></div>
+        </div>
+    </div>
+<!--Medical Records-->
+    <div class="bg-white w-[365px] rounded-lg shadow-md overflow-auto my-2">
+        <div class="bg-[#78A2CC] w-full h-[22.25px] p-2  rounded-t-[25px] text-white font-semibold flex items-center justify-center">
+            Medical Records
+           </div>
+       <div class="bg-white p-4 w-full ">
+               <div class="flex justify-between h-[34px]">
+                   <span class="font-semibold text-black  w-[200px] text-left">acute sinusitis</span>
+               </div>
+               <div class="h-[2.5px] w-[328px] rounded-full bg-[#A4C3D2] place-self-center"></div>
+               <div class="flex justify-between mt-2">
+                   <span class="font-semibold text-black w-[200px] text-left">acute sinusitis</span>
+               </div>
+               <div class="h-[2.5px] w-[full] rounded-full bg-[#A4C3D2] place-self-center"></div>
+               <div class="flex justify-between mt-2">
+                   <span class="font-semibold text-black w-[200px] text-left">acute sinusitis</span>
+               </div>
+               <div class="h-[2.5px] w-[328px] rounded-full bg-[#A4C3D2] place-self-center"></div>
+       </div>
+   </div>
+
+
 
         <div class="bg-[#78A2CC]  w-full p-4 rounded-b-[30px] flex flex-col gap-y-2">
             <div class="h-[5px] w-[130px] rounded-full bg-[#FAFAFA] place-self-center"></div>
@@ -179,6 +268,8 @@
         </div>
     </div>
 </div>
+
+
 
 <style>
     @import 'tailwindcss/base';
