@@ -194,7 +194,7 @@
             </div>
 
             <p class="text-xs text-[#5C6265] mb-4 text-right font-[Montserrat]">
-                <span style="opacity: 0.5;">Already have an Account?</span> <a href="http://localhost:5173/signup">Log In</a> 
+                <span style="opacity: 0.5;">Already have an Account?</span> <a href="http://localhost:5173/login">Log In</a> 
             </p>
 
             <div class="submit-button flex justify-center items-center">
