@@ -1,11 +1,13 @@
 <script>
+    import { config } from "$lib/config";
+
     let password = "";
     let repeatpassword = "";
     let email = "";
     let firstname = "";
     let lastname = "";
     let birthday = "";
-    let phonenumber = "";
+    let phoneNumber = "";
     let showPassword = false;
     let showRepeatPassword = false;
     let isPasswordFocused = false;
@@ -49,9 +51,28 @@
         isPasswordFocused = false;
     }
 
-    function handleSubmit() {
-        // Handle form submission
-        console.log("Form submitted");
+    async function handleSubmit() {
+        const name = `${firstname.trim()} ${lastname.trim()}`;
+        const payload = {
+            email,
+            password,
+            name,
+            birthday,
+            phoneNumber
+        }
+        console.log("Fetching profile");
+        const response = await fetch(`${config.host}/user/login?email=${email}&password=${password}`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        });
+
+        if (response.ok) {
+        const profile = await response.json();
+        } else {
+        console.error("Failed to fetch profile");
+        }
     }
 </script>
 
@@ -105,7 +126,7 @@
                 <input type="string" bind:value={firstname} placeholder="First Name" class="w-full p-3 border-[#A4C3D2] border-[3px] rounded-md font-[Montserrat] mb-2" />
                 <input type="string" bind:value={lastname} placeholder="Last Name" class="w-full p-3 border-[#A4C3D2] border-[3px] rounded-md font-[Montserrat] mb-2" />
                 <input type="date" bind:value={birthday} class="w-full p-3 border-[#A4C3D2] border-[3px] rounded-md font-[Montserrat] mb-2" />
-                <input type="tel" pattern="[0-9]{4}-[0-9]{3}-[0-9]{4}" bind:value={phonenumber} placeholder="0912-354-9786" class="w-full p-3 border-[#A4C3D2] border-[3px] rounded-md font-[Montserrat] mb-2" />
+                <input type="tel" pattern="[0-9]{4}-[0-9]{3}-[0-9]{4}" bind:value={phoneNumber} placeholder="0912-354-9786" class="w-full p-3 border-[#A4C3D2] border-[3px] rounded-md font-[Montserrat] mb-2" />
                 <input type="email" bind:value={email} placeholder="Email" class="w-full p-3 border-[#A4C3D2] border-[3px] rounded-md font-[Montserrat] mb-2" />
                 <div class="relative mb-1">
                     <input
