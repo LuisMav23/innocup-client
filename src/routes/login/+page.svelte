@@ -80,7 +80,7 @@
               aria-hidden="true"
             >
               {#if showPassword}
-                <!-- Eye icon when password is visible -->
+                <!-- Eye icon when password is visible -->q
                 <path d="m1 12s4-8 11-8 11 8 11 8"/><path d="m1 12s4 8 11 8 11-8 11-8"/><circle cx="12" cy="12" r="3"/>
               {:else}
                 <!-- Eye-off icon when password is hidden -->
@@ -92,7 +92,7 @@
         </div>
         <div class="flex justify-between">
           <p class="text-xs text-[#5C6265] mb-4 text-right font-[Montserrat]">
-            <span style="opacity: 0.5;">New to Lifeline?</span> <a href="http://localhost:5173/log%20in">Sign Up</a>
+            <span style="opacity: 0.5;">New to Lifeline?</span> <a href="http://localhost:5173/signup">Sign Up</a>
           </p>
           <p class="text-xs text-[#5C6265] mb-4 text-right font-[Montserrat]">
             Forgot Password
