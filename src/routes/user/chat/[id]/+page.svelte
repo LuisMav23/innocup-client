@@ -1,6 +1,7 @@
 <script>
     import { onMount } from 'svelte';
 
+
     let carouselData = [
         {
             type: 'emergency',
