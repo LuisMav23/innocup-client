@@ -1,10 +1,5 @@
 <script>
     import { onMount } from 'svelte';
-    import Swiper from 'swiper';
-    import { Navigation, Pagination } from 'swiper/modules';
-    import 'swiper/css';
-    import 'swiper/css/navigation';
-    import 'swiper/css/pagination';
 
     let carouselData = [
         {
@@ -71,11 +66,11 @@
     }
 </script>
 
-<div class="bg-white max-w-md w-full max-h-screen flex items-center justify-center p-5">
+<div class="bg-white max-w-md w-full max-h-screen flex items-center justify-center p-5 overflow-y-auto">
     <div class="bg-white rounded-lg w-full">
-        <div class="p-1">
+        <div class="p-1 max-h-[800px]">
             <!--User's Name and Address-->
-            <div class="rounded-lg p-4 sticky top-0 z-10">
+            <div class="rounded-lg p-4 sticky top-0 z-0">
                 <div class="flex items-center mb-2">
                     <div class="w-16 h-16 bg-gray-300 rounded-full mr-4 overflow-hidden">
                         <img src="src\img\new year 1.jpg" alt="Santos, Cedrick P." class="w-full h-full object-cover outline outline-1" />

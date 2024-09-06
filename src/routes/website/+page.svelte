@@ -27,8 +27,6 @@
         scrollToBottom();
     });
 
-    $: messages, scrollToBottom();
-
     function handleKeyPress(event) {
         if (event.key === 'Enter') {
             sendMessage();
