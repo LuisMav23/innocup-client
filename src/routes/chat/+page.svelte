@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { writable, onMount } from "svelte/store";
+    import { writable } from "svelte/store";
     import { slide } from "svelte/transition";
     
     import ChatBubble from "$lib/components/chatBubble.svelte";
@@ -19,12 +19,10 @@
         { sender: "bot", message: "Helloaosdfj;aolisdjflkajdfklasflaskldfjlajsdf aolisdjflkajdfklasflaskl dfjlajsdf aolisdjflka jdfklasflaskldfjlajsdf aolisdjfl aolisdjflkajdfklasflaskldfjlajsdf aolisdjflkajdfklasflaskldfjlajsdf kajdfklasflaskldfjlajsdf World" }
     ]);
 
-    let messagesContainer: HTMLDivElement;
-
     function sendMessage() {
-        if (message.trim() === "") return; 
+        if (message.trim() === "") return; // Avoid sending empty messages
         chatMessages.update(messages => [...messages, { sender: "user", message }]);
-        message = ""; 
+        message = ""; // Clear the input after sending
     }
 
     function handleKeydown(event: KeyboardEvent) {
@@ -33,14 +31,6 @@
             sendMessage();
         }
     }
-
-    
-    function scrollToBottom() {
-        if (messagesContainer) {
-            messagesContainer.scrollTop = messagesContainer.scrollHeight;
-        }
-    }
-    
 </script>
 
 <!-- MAIN CONTAINER -->
@@ -118,10 +108,10 @@
     </div>
 
     <!-- CHAT -->
-    <div class="bg-secondary flex flex-col justify-between items-center p-6 w-full md:w-7/12 lg:w-8/12 h-full rounded-lg mt-2 md:ml-3 md:mt-0 overflow-hidden">
-        <div class="flex flex-col h-full w-full overflow-hidden">
+    <div class="bg-secondary flex flex-col justify-between items-center p-6 w-full md:w-7/12 lg:w-8/12 h-full  rounded-lg mt-2 md:ml-3 md:mt-0 overflow-hidden">
+        <div class="flex flex-col h-full w-full overflow-auto">
             <!-- Chat messages container -->
-            <div bind:this={messagesContainer} class="flex flex-col flex-grow overflow-auto p-2">
+            <div class="flex flex-col flex-grow overflow-auto p-2">
                 {#each $chatMessages as { sender, message }}
                     <ChatBubble sender={sender} position={sender === "bot"} message={message} />
                 {/each}
