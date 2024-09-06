@@ -7,7 +7,7 @@
     
     import ChatBubble from "$lib/components/chatBubble.svelte";
     import CollapsibleList from "$lib/components/collapsibleList.svelte";
-    import profilePif from "$lib/img/new year 1.jpg";
+    import profilePic from "$lib/img/new year 1.jpg";
     
     import { sessionUser, setSessionUser, sessionUserHealthInfo, setSessionUserHealthInfo, sessionUserConacts, setSessionUserConacts } from "$lib/stores/sessionStore";
     import { page } from '$app/stores';
@@ -30,6 +30,7 @@
     });
 
     onMount(async () => {
+        console.log("Fetching profile", config.host);
         try {
         const responseUserData = await axios.get(`${config.host}/user/id/${id}`, {
             headers: {
@@ -57,6 +58,7 @@
             setSessionUser(userData);
             setSessionUserHealthInfo(userHealthInfo);
             setSessionUserConacts(userContacts);
+
             console.log(user);
             console.log(healthInfo);
             console.log(contacts);
@@ -64,7 +66,7 @@
             console.error("Failed to fetch profile");
         }
         } catch (error) {
-        console.error("Failed to fetch profile", error);
+            console.error("Failed to fetch profile", error);
         }
     });
 
@@ -104,7 +106,7 @@
         <div class="flex flex-row justify-start items-center w-full">
             <!-- PROFILE PICTURE -->
             <div class="flex self-start mr-5">
-                <img src={profilePif} alt="Profile Picture" class="w-16 h-16 rounded-full object-cover" />
+                <img src={profilePic} alt="Profile Picture" class="w-16 h-16 rounded-full object-cover"/>
             </div>
             <!-- NAME AND ADDRESS -->
             <div class="flex flex-col justify-center items-start">
