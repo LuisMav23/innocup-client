@@ -1,14 +1,17 @@
 <!-- design subject to change-->
 <!-- Initial design inspired by login/signup form used by airbnb -->
 <script>
+  import { goto } from "$app/navigation";
+
 
   import { config } from "$lib/config"
   import { setProfile, profileStore } from "$lib/stores/profileStore";
-  import { redirect } from "@sveltejs/kit";
+  import axios from "axios";
 
   let password = "";
   let email = "";
   let showPassword = false;
+  let rememberMe = false;
   /**
    * @type {HTMLInputElement}
    */
@@ -22,20 +25,28 @@
   }
 
   async function handleSubmit() {
-    console.log("Fetching profile", email, password);
-    const response = await fetch(`${config.host}/user/login?email=${email}&password=${password}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    try {
+      const response = await axios.get(`${config.host}/user/login?email=${email}&password=${password}`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
-    if (response.ok) {
-      const profile = await response.json();
-      setProfile(profile);
-      console.log($profileStore);
-    } else {
-      console.error("Failed to fetch profile");
+      if (response.status === 200) {
+        const profile = response.data;
+
+        setProfile(profile);
+        console.log($profileStore);
+
+        if (rememberMe) {
+          localStorage.setItem("profile", JSON.stringify(profile));
+        }
+        goto("/profile");
+      } else {
+        console.error("Failed to fetch profile");
+      }
+    } catch (error) {
+      console.error("Failed to fetch profile", error);
     }
   }
 </script>
@@ -96,6 +107,12 @@
           </p>
           <p class="text-xs text-[#5C6265] mb-4 text-right font-[Montserrat]">
             Forgot Password
+          </p>
+        </div>
+        <div class="flex flex-row justify-start items-start">
+          <input type="checkbox" class="mr-2" bind:checked={rememberMe}/>
+          <p class="text-xs text-[#5C6265] mb-4 text-right font-[Montserrat]">
+            Remember me
           </p>
         </div>
         <button type="submit" class="w-full text-white p-3 rounded-md font-semibold bg-[#78A2CA] font-[Merriweather]">
