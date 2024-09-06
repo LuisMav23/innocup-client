@@ -1,10 +1,73 @@
 <script lang="ts">
     import { writable } from "svelte/store";
-    import { slide } from "svelte/transition";
+    import { onMount } from "svelte";
+    import axios from "axios";
+
+    import { config } from "$lib/config";
     
     import ChatBubble from "$lib/components/chatBubble.svelte";
     import CollapsibleList from "$lib/components/collapsibleList.svelte";
+    import profilePif from "$lib/img/new year 1.jpg";
     
+    import { sessionUser, setSessionUser, sessionUserHealthInfo, setSessionUserHealthInfo, sessionUserConacts, setSessionUserConacts } from "$lib/stores/sessionStore";
+    import { page } from '$app/stores';
+
+    $: id = $page.params.id;
+    let user: any;
+    let healthInfo: any;
+    let contacts: any;
+
+    sessionUser.subscribe(value => {
+        user = value;
+    });
+
+    sessionUserHealthInfo.subscribe(value => {
+        healthInfo = value;
+    });
+
+    sessionUserConacts.subscribe(value => {
+        contacts = value;
+    });
+
+    onMount(async () => {
+        try {
+        const responseUserData = await axios.get(`${config.host}/user/id/${id}`, {
+            headers: {
+            "Content-Type": "application/json",
+            },
+        });
+
+        const responseUserHealthInfo = await axios.get(`${config.host}/health-info/user/${id}`, {
+            headers: {
+            "Content-Type": "application/json",
+            },
+        });
+
+        const responseUserContacts = await axios.get(`${config.host}/emergency-contact/user/all/${id}`, {
+            headers: {
+            "Content-Type": "application/json",
+            },
+        });
+
+        if (responseUserData.status === 200 && responseUserHealthInfo.status === 200 && responseUserContacts.status === 200) {
+            const userData = responseUserData.data;
+            const userHealthInfo = responseUserHealthInfo.data[0];
+            const userContacts = responseUserContacts.data;
+
+            setSessionUser(userData);
+            setSessionUserHealthInfo(userHealthInfo);
+            setSessionUserConacts(userContacts);
+            console.log(user);
+            console.log(healthInfo);
+            console.log(contacts);
+        } else {
+            console.error("Failed to fetch profile");
+        }
+        } catch (error) {
+        console.error("Failed to fetch profile", error);
+        }
+    });
+
     // Store variables
     let isChronicConditionsOpen = writable(false);
     let isAllergiesOpen = writable(false);
@@ -41,12 +104,12 @@
         <div class="flex flex-row justify-start items-center w-full">
             <!-- PROFILE PICTURE -->
             <div class="flex self-start mr-5">
-                <img src="src/img/new year 1.jpg" alt="Profile Picture" class="w-16 h-16 rounded-full object-cover" />
+                <img src={profilePif} alt="Profile Picture" class="w-16 h-16 rounded-full object-cover" />
             </div>
             <!-- NAME AND ADDRESS -->
             <div class="flex flex-col justify-center items-start">
-                <h1 class="text-lg font-semibold">Luis Maverick L. Gabriel</h1>
-                <p class="text-xs font-normal text-gray-500">58 M. Ablola St. Tangos South, Navotas City</p>
+                <h1 class="text-lg font-semibold">{user['name']}</h1>
+                <p class="text-xs font-normal text-gray-500">{user['address']}</p>
             </div>
         </div>
 
@@ -58,52 +121,34 @@
             <div class="flex flex-col w-full sm:w-4/12">
                 <div class="flex flex-col justify-start items-center">
                     <!-- CHRONIC CONDITIONS -->
-                    <CollapsibleList state={$isChronicConditionsOpen} title={'Chronic Conditions'} items={[
-                        'Acute Sinusitis',
-                        'Tuberculosis',
-                        'Kidney Stones'
-                    ]} />
+                    <CollapsibleList state={$isChronicConditionsOpen} title={'Chronic Conditions'} items={healthInfo['chronicConditions']} />
 
                     <!-- ALLERGIES -->
-                    <CollapsibleList state={$isAllergiesOpen} title={'Allergies'} items={[
-                        'Crabs',
-                        'Paracetamol',
-                        'Peanut'
-                    ]} />
+                    <CollapsibleList state={$isAllergiesOpen} title={'Allergies'} items={healthInfo['allergies']} />
 
                     <!-- MEDICATIONS -->
-                    <CollapsibleList state={$isMedicationsOpen} title={'Medications'} items={[
-                        'Fixcom 4',
-                        'Tascit',
-                    ]} />
+                    <CollapsibleList state={$isMedicationsOpen} title={'Medications'} items={healthInfo['medications']} />
 
                     <!-- HEALTH RISKS -->
-                    <CollapsibleList state={$isHealthRisksOpen} title={'Health Risks'} items={[
-                        'Smoking',
-                        'Obesity',
-                        'Alcohol Usage'
-                    ]} />
+                    <CollapsibleList state={$isHealthRisksOpen} title={'Health Risks'} items={healthInfo['healthRisks']} />
 
                     <!-- PAST SURGERIES -->
-                    <CollapsibleList state={$isPastSurgeriesOpen} title={'Past Surgeries'} items={[
-                        'Kidney Transplant',
-                        'Appendicitis Removal',
-                    ]} />
+                    <CollapsibleList state={$isPastSurgeriesOpen} title={'Past Surgeries'} items={healthInfo['pastSurgeries']} />
                 </div>
-                
-                <div class="flex w-full h-1 bg-primary my-5 rounded-full"></div>
             </div>
             <!-- Emergency Contacts -->
             <div class="flex flex-col justify-start items-start px-2 md:px-2 sm:px-8 h-48 sm:h-44 md:h-40 w-full sm:w-8/12 overflow-auto">
-                <div class="flex flex-col w-full h-auto justify-center items-start">
-                    <h2 class="text-base font-bold">Mary Grace Gabriel</h2>
-                    <h3 class="text-xs font-thin">09334564717</h3>
-                    <p class="text-xs font-thin">Mother</p>
-                </div>
+                
+                {#each contacts as contact}
+                    <div class="flex flex-col w-full h-auto justify-center items-start">
+                        <h2 class="text-base font-bold">{contact['name']}</h2>
+                        <h3 class="text-xs font-thin">{contact['phoneNumber']}</h3>
+                        <p class="text-xs font-thin">{contact['relationship']}</p>
+                    </div>
+                {/each}
                 <!-- Repeat emergency contacts as needed -->
             </div>
         </div>
-
         <div class="flex w-full h-1 bg-primary my-5 rounded-full"></div>
     </div>
 

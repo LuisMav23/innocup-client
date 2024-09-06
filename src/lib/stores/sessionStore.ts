@@ -1,25 +1,17 @@
 import { writable } from 'svelte/store';
 
-export const userStore = writable();
+export const sessionUser = writable(null);
+export const sessionUserHealthInfo = writable(null);
+export const sessionUserConacts = writable(null);
 
-export const charSession = writable(
-  {
-
-  }
-);
-
-interface ChatSession {
-  id: string;
-  user: string;
+export const setSessionUser = (user: any) => {
+  sessionUser.set(user);
 }
 
-interface Chat {
-  id: string;
-  sender: string;
-  message: string;
-  createdAt: string;
+export const setSessionUserHealthInfo = (healthInfo: any) => {
+  sessionUserHealthInfo.set(healthInfo);
 }
 
-interface User {
-  
+export const setSessionUserConacts = (contacts: any) => {
+  sessionUserConacts.set(contacts);
 }
