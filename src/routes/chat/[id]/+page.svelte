@@ -110,8 +110,8 @@
             </div>
             <!-- NAME AND ADDRESS -->
             <div class="flex flex-col justify-center items-start">
-                <h1 class="text-lg font-semibold">{user['name']}</h1>
-                <p class="text-xs font-normal text-gray-500">{user['address']}</p>
+                <h1 class="text-lg font-semibold">{$sessionUser?.name}</h1>
+                <p class="text-xs font-normal text-gray-500">{$sessionUser?.name}</p>
             </div>
         </div>
 
@@ -123,25 +123,25 @@
             <div class="flex flex-col w-full sm:w-4/12">
                 <div class="flex flex-col justify-start items-center">
                     <!-- CHRONIC CONDITIONS -->
-                    <CollapsibleList state={$isChronicConditionsOpen} title={'Chronic Conditions'} items={healthInfo['chronicConditions']} />
+                    <CollapsibleList state={$isChronicConditionsOpen} title={'Chronic Conditions'} items={$sessionUserHealthInfo?.chronicConditions} />
 
                     <!-- ALLERGIES -->
-                    <CollapsibleList state={$isAllergiesOpen} title={'Allergies'} items={healthInfo['allergies']} />
+                    <CollapsibleList state={$isAllergiesOpen} title={'Allergies'} items={$sessionUserHealthInfo?.allergies} />
 
                     <!-- MEDICATIONS -->
-                    <CollapsibleList state={$isMedicationsOpen} title={'Medications'} items={healthInfo['medications']} />
+                    <CollapsibleList state={$isMedicationsOpen} title={'Medications'} items={$sessionUserHealthInfo?.medications} />
 
                     <!-- HEALTH RISKS -->
-                    <CollapsibleList state={$isHealthRisksOpen} title={'Health Risks'} items={healthInfo['healthRisks']} />
+                    <CollapsibleList state={$isHealthRisksOpen} title={'Health Risks'} items={$sessionUserHealthInfo?.healthRisks} />
 
                     <!-- PAST SURGERIES -->
-                    <CollapsibleList state={$isPastSurgeriesOpen} title={'Past Surgeries'} items={healthInfo['pastSurgeries']} />
+                    <CollapsibleList state={$isPastSurgeriesOpen} title={'Past Surgeries'} items={$sessionUserHealthInfo?.pastSurgeries} />
                 </div>
             </div>
             <!-- Emergency Contacts -->
             <div class="flex flex-col justify-start items-start px-2 md:px-2 sm:px-8 h-48 sm:h-44 md:h-40 w-full sm:w-8/12 overflow-auto">
                 
-                {#each contacts as contact}
+                {#each $sessionUserConacts as contact}
                     <div class="flex flex-col w-full h-auto justify-center items-start">
                         <h2 class="text-base font-bold">{contact['name']}</h2>
                         <h3 class="text-xs font-thin">{contact['phoneNumber']}</h3>
@@ -151,6 +151,7 @@
                 <!-- Repeat emergency contacts as needed -->
             </div>
         </div>
+        
         <div class="flex w-full h-1 bg-primary my-5 rounded-full"></div>
     </div>
 
